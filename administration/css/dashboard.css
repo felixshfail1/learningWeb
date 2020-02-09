@@ -1,0 +1,14 @@
+.card {
+    text-align: center;
+}
+.card:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+i {
+    margin-top: 10px;
+    font-size: 60px;
+}
+.fa {
+    font-size: 60px;
+}
