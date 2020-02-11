@@ -1,15 +1,28 @@
-var filesHref = document.querySelector('#filesHref')
-var messagesHref = document.querySelector('#messagesHref')
-var gestionHref = document.querySelector('#gestionHref')
+$(document).ready(function() {
+    $('#contenu').css('display', 'none');
+    $('#contenu').fadeIn(1000);
+    $('body').toggleClass('bgColor');
+    
+    $( "#filesHref" ).click(function() {
+        event.preventDefault();
+        newLocation = "./applications/upload/index.php"
+        $('#contenu').fadeOut(1000, newpage);
+    });
 
-filesHref.addEventListener('click', function() {
-    location.href = "./applications/upload/index.php"
-})
+    $( "#messagesHref" ).click(function() {
+        event.preventDefault();
+        newLocation = "./applications/chat/index.php"
+        $('#contenu').fadeOut(1000, newpage);
+    });
+    
+    $( "#gestionHref" ).click(function() {
+        event.preventDefault();
+        newLocation =  "./applications/gestion/index.php"
+        $('#contenu').fadeOut(1000, newpage);
+    });
+    
+    function newpage() {
+        window.location = newLocation;
+    }
 
-messagesHref.addEventListener('click', function() {
-    location.href = "./applications/chat/index.html"
-})
-
-gestionHref.addEventListener('click', function() {
-    location.href = "./applications/gestion/index.html"
 })

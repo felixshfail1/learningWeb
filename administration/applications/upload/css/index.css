@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -11,23 +12,23 @@ body {
     margin: 0;
     display: flex;
     font-family: 'Montserrat', sans-serif;
+    transition:background-color 1s ease;
+}
+.bgColor {
     background: #535c68;
 }
-
 .wrapper {
     margin: auto;
     max-width: 640px;
     padding-top: 60px;
     text-align: center;
+    
 }
 
 .container-fluid {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-    /*border: 0.5px solid rgba(130, 130, 130, 0.25);*/
-    /*box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 
-      0 0 0 1px rgba(0, 0, 0, 0.1);*/
 }
 
 h1 {
@@ -79,3 +80,4 @@ h1 {
     color: #95afc0;
     opacity: 0.55;
 }
+

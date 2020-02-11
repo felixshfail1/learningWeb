@@ -1,3 +1,10 @@
+body {
+    background: #535c68;
+    transition:background-color 1s ease;
+}
+.bgColor {
+    background : none;
+}
 .card {
     text-align: center;
 }

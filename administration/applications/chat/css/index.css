@@ -1,0 +1,6 @@
+body {
+    transition:background-color 1s ease;
+    }
+.bgColor {
+    background: #535c68;
+}
