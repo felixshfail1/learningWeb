@@ -1,5 +1,38 @@
 <?php 
-       include '../../fonctionnalites/isAuthenticate.php';
+    include '../../fonctionnalites/isAuthenticate.php';
+
+    $isUploaded = false;
+
+    if(isset($_FILES['fichier'])){
+        $errors = array();
+        $file_name = $_FILES['fichier']['name'];
+        $file_size = $_FILES['fichier']['size'];
+        $file_tmp = $_FILES['fichier']['tmp_name'];
+        $file_type = $_FILES['fichier']['type'];
+        
+        $splitString = explode('.',$file_name);
+        $file_ext = strtolower(end($splitString));
+        
+        $extensions = array("jpeg","jpg","png","txt");
+
+        if(!(in_array($file_ext,$extensions))){
+            $errors[] = "Mauvais extension";
+        }
+
+        if($file_size > 2097152){
+            $errors[] = "Maximum 2MB";
+        }
+
+        if(empty($errors)){
+       
+            move_uploaded_file($file_tmp,"./uploadedFiles/".$file_name);
+            $isUploaded = true;
+           
+        }
+        else{
+            echo "erreur";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,27 +54,32 @@
        <?php include '../../fonctionnalites/showHeader.php' ?>
 
         <div class="wrapper">
+
+        <?php if($isUploaded) { ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert" id="divAlerte">
-                           
-                                <button type="button" onclick="this.parentNode.style.display = 'none';" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
+            Le fichier a bien été télécharger
+             <button type="button" onclick="this.parentNode.style.display = 'none';" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+        </div>
+        <?php } ?>
             <div class="container-fluid">
 
                 <h1>Télécharger un fichier</h1>
-                <div class="upload-container">
-                    <div class="border-container">
-                        <div class="icons fa-4x">
-                            <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
-                            <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
-                            <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                <form action="" method="POST" enctype="multipart/form-data" id="uploadForm">
+                    <div class="upload-container">
+                        <div class="border-container">
+                            <div class="icons fa-4x">
+                                <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+                                <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+                                <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                            </div>
+                            <input type="file" id="file-upload" onchange="upload()" name="fichier">
+                            <p>Drag and drop files here, or
+                                <a href="" id="file-browser">browse</a> your computer.</p>
                         </div>
-                        <input type="file" id="file-upload" onchange="upload()">
-                        <p>Drag and drop files here, or
-                            <a href="" id="file-browser">browse</a> your computer.</p>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
