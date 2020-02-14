@@ -27,7 +27,7 @@
        
             move_uploaded_file($file_tmp,"./uploadedFiles/".$file_name);
             $isUploaded = true;
-           
+           header('Location: ./index.php?isUploaded=true');
         }
         else{
             echo "erreur";
@@ -55,14 +55,16 @@
 
         <div class="wrapper">
 
-        <?php if($isUploaded) { ?>
+        <?php if(isset($_GET['isUploaded'])) {
+                 if($_GET['isUploaded'] == true){?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert" id="divAlerte">
             Le fichier a bien été télécharger
-             <button type="button" onclick="this.parentNode.style.display = 'none';" class="close" data-dismiss="alert" aria-label="Close">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closeBtn">
                <span aria-hidden="true">&times;</span>
              </button>
         </div>
-        <?php } ?>
+        <?php }
+                } ?>
             <div class="container-fluid">
 
                 <h1>Télécharger un fichier</h1>
