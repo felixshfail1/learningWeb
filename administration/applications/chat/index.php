@@ -17,15 +17,18 @@
     <div class="container">
     <?php include '../../fonctionnalites/showHeader.php' ?>
         <section class="chat">
-            <h1>Chat</h1>
-            <div class="message">
-                
-                </div>
-                <div class="user-inputs">
-                    <form action="handler.php?task=write" method="post">
-                        <input type="text" name="author" id="author" placeholder="Nickname">
-                    </form>
-                </div>
+            <h1 style="margin-top : -1em">Chat</h1>
+            <br>
+            <div class="messages">
+             
+            </div>
+            <div class="user-inputs">
+                <form action="" method="post">
+                    <input type="hidden" name="author" id="author" value="<?php echo $_SESSION['username']?>">
+                    <input type="text" id="content" name="content" placeholder="Écrivez votre message ici">
+                    <button type="submit" id="submitButton">Envoyer !</button>
+                </form>
+            </div>
             </section>
     </div>
 

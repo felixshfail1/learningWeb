@@ -4,3 +4,28 @@ body {
 .bgColor {
     background: #535c68;
 }
+.messages {
+    border-radius: 6px;
+    background-color : #f8f9fa !important;
+    padding: 1em;
+    height: 50vh;
+    overflow: auto;
+}
+form {
+    display: flex;
+    margin-top: 1em;
+    justify-content: space-between;
+  }
+  #content {
+    width: 85%;
+    border-radius: 6px;
+    border:none;
+    padding-left: 8px;
+  }
+  #send {
+    border-radius: 6px;
+    border:none;
+  }
+  #send:hover{
+      background-color : steelblue;
+  }
