@@ -5,6 +5,9 @@ transition:background-color 1s ease;
     background: #535c68;
 }
 /***Membres***/
+#h2GererMembres:hover{
+    color : #f8f9fa !important;
+}
 #membres {
     background: #f8f9fa !important;
     border-radius: 6px;
@@ -12,7 +15,25 @@ transition:background-color 1s ease;
 #membre{
     border-bottom : 0.2px black solid;
 }
-
+/****Nouveau membre****/
+#h2InscrireMembre:hover{
+    color : #f8f9fa !important;
+}
+#alertBoxInscription{
+    width : 75%;
+    margin: 0 auto;
+}
+#nouveauMembre{
+    background: #f8f9fa !important;
+    border-radius: 6px;
+}
+.form-group {
+    width : 75%;
+    margin: 0 auto;
+}
+#submitDiv{
+    text-align: center;
+}
 /*****Profil****/
 
 #profil {

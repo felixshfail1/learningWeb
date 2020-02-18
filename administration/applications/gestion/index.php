@@ -7,6 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <title>Felix Noiseux | Gestion</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -21,7 +22,29 @@
        <?php include '../../fonctionnalites/showHeader.php' ?>
 
        <section class="contenu">
-           <h1>Gestion</h1>
+            <h2>Profil</h2>
+           
+           <div id="profil">
+               <br>
+               <div class="alert alert-warning alert-dismissible fade show" role="alert" id="divAlerte">
+                    Profil sauvegardé !
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closeBtn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="formulaire">
+                    <img id="imgProfil">
+                    <br><br>
+                    <input type="text" id="imgUrl" name="imgUrl">
+                    <br>
+                    <p>Description</p>
+                    <textarea id="description" name="description"> </textarea>
+                    <br><br>
+                    <button type="submit" id="submitButton">Sauvegarder</button>
+                    <br><br>
+                </form>
+           </div>
+           <h2 id="h2GererMembres">Gérer membres</h2>
 
            <div id="membres">
            <?php 
@@ -66,28 +89,37 @@
             //var_dump($membres);
            ?>
            </div>
-           <h1>Profil</h1>
-           
-           <div id="profil">
+           <h2 id="h2InscrireMembre">Inscrire membre</h2>
+           <div id="nouveauMembre">
                <br>
-               <div class="alert alert-warning alert-dismissible fade show" role="alert" id="divAlerte">
-                    Profil sauvegardé !
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closeBtn">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formulaire">
-                    <img id="imgProfil">
-                    <br><br>
-                    <input type="text" id="imgUrl" name="imgUrl">
-                    <br>
-                    <p>Description</p>
-                    <textarea id="description" name="description"> </textarea>
-                    <br><br>
-                    <button type="submit" id="submitButton">Sauvegarder</button>
-                    <br><br>
+                <form method="POST">
+                    <div class="alert alert-warning" role="alert" id="alertBoxInscription">
+                        This is a warning alert—check it out!
+                    </div>
+                    <div class="form-group">
+                        <label >Nom (Civil)</label>
+                        <input type="text" id="nomInscri" class="form-control" placeholder="Entrer le nom">
+                    </div>
+                    <div class="form-group">
+                        <label >Username</label>
+                        <input type="text" id="usernameInscri" class="form-control" placeholder="Entrer le username">
+                    </div>
+                    <div class="form-group">
+                        <label >Mot de passe</label>
+                        <input type="password" id="password" class="form-control" placeholder="Entrer le mot de passe">
+                    </div>
+                    <div class="form-group">
+                        <label >Confirmation mot de passe</label>
+                        <input type="password" id="repassword" class="form-control" placeholder="Confirmer le mot de passe">
+                    </div>
+                    <div class="form-group" id="submitDiv">
+                        <br>
+                        <button type="button" id="btnInscrire" class="btn btn-secondary btn-sm">Inscrire !</button>
+                    </div>   
                 </form>
+                <br>
            </div>
+           
            <br><br>
        </section>
     </div>
