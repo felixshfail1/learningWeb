@@ -13,9 +13,16 @@
   if(isset($_POST['precedent'])){
     $arrayDir = $array;
     array_pop($arrayDir); //pop current page
-    array_pop($arrayDir); //pop current directory
-    $newLocation = end($arrayDir);
-    header('Location: /FelixNoiseuxCom/administration/'.$newLocation);
+
+    if( end($arrayDir) == "administration"){
+      header('Location: /FelixNoiseuxCom/administration/dashboard.php');
+    }
+    else{
+      array_pop($arrayDir); //pop current directory
+      $newLocation = end($arrayDir);
+      header('Location: /FelixNoiseuxCom/administration/'.$newLocation);
+    }
+
   }
   else if(isset($_POST['deconnexion'])){
     session_destroy();
