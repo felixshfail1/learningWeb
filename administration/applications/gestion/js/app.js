@@ -14,6 +14,7 @@ $(document).ready(function() {
 var divAlerte = document.getElementById("divAlerte");
 var divAlerteBtn = document.getElementById("closeBtn");
 var btn = document.getElementById("submitButton");
+var btnRemoveMembre = document.getElementById("removeButton");
 var btnAfficherInscription = document.getElementById("h2InscrireMembre");
 var btnAfficherMembres = document.getElementById("h2GererMembres");
 var btnInscrire = document.getElementById("btnInscrire");
@@ -103,7 +104,26 @@ function inscrireMembre(){
 
   requeteAjax.send(data);
 }
+function supprimerMembre(idMembre){
+  event.preventDefault();
 
+  const data = new FormData();
+  data.append('ID', idMembre);
+
+  const requeteAjax = new XMLHttpRequest();
+  requeteAjax.open('POST', 'supprimerMembre.php');
+
+  requeteAjax.onload = function(){
+    const resultat = JSON.parse(requeteAjax.responseText);
+    if(resultat.status == "error"){
+      alert("erreur")
+    } else if(resultat.status == "succes"){
+      alert("succes");
+    }
+  }
+
+  requeteAjax.send(data);
+}
 function closeDivAlerte(){
     $('#divAlerte').hide(1000);
 }
@@ -118,4 +138,5 @@ divAlerteBtn.addEventListener("click", closeDivAlerte);
 btnAfficherInscription.addEventListener("click", afficherInscription);
 btnAfficherMembres.addEventListener("click",afficherMembres);
 btnInscrire.addEventListener("click", inscrireMembre);
+btnRemoveMembre.addEventListener("click", supprimerMembre);
 reccupererProfil();

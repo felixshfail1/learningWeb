@@ -47,6 +47,7 @@
            <h2 id="h2GererMembres">Gérer membres</h2>
 
            <div id="membres">
+           
            <?php 
             $db = new PDO('mysql:host=localhost;dbname=felixnoiseuxcom;charset=utf8', 'root', '', [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
@@ -62,32 +63,36 @@
             //Requete et Affichage membres
             $resultat = $db->query("SELECT * FROM utilisateur");
             $membres = $resultat->fetchAll();
+            ?>
 
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Username</th>
+                <?php if($estAdmin == 1){ ?> <th scope="col"></th> <?php } ?>
+               
+                </tr>
+            </thead>
+            <tbody>
+            <?php
             for($i = 0; $i < count($membres); $i++){
                 if($membres[$i]["UtilisateurUsername"] == $username){
                     continue;
                 }
                 ?>
-                <div id="membre">
-                    <span>Nom utilisateur : </span>
-                    <input type="hidden" id="id" value="<?php echo $membres[$i]["UtilisateurID"] ?>"/>
-                    <?php 
-                        echo $membres[$i]["UtilisateurNom"];
-                    ?>
-                    <span>Nom connection : </span>
-                    <?php 
-                        echo $membres[$i]["UtilisateurUsername"];
-                    ?>
-                    
-                    <?php if($estAdmin == 1){ ?>
-                        <input type="button" value="Supprimer"/>
-                    <?php } ?>
-                </div>
+                <tr>
+                    <th scope="row"> <?= $membres[$i]["UtilisateurID"]?> </th>
+                    <td>             <?= $membres[$i]["UtilisateurNom"]?> </td>
+                    <td>             <?= $membres[$i]["UtilisateurUsername"]?> </td>
+                    <?php if($estAdmin == 1){ ?>  <td> <i class="fa fa-remove" id="removeButton" onclick="supprimerMembre(<?= $membres[$i]['UtilisateurID']?>)" ></i></td> <?php } ?>
+                </tr>
                 <?php 
             }
-       
-            //var_dump($membres);
            ?>
+           </tbody>
+           </table>
            </div>
            <h2 id="h2InscrireMembre">Inscrire membre</h2>
            <div id="nouveauMembre">

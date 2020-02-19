@@ -12,8 +12,8 @@ transition:background-color 1s ease;
     background: #f8f9fa !important;
     border-radius: 6px;
 }
-#membre{
-    border-bottom : 0.2px black solid;
+#removeButton:hover {
+    cursor: pointer;
 }
 /****Nouveau membre****/
 #h2InscrireMembre:hover{

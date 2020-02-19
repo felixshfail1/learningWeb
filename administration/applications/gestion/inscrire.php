@@ -18,7 +18,7 @@
         return;
     }
     else{
-        $sql = "INSERT INTO utilisateur (UtilisateurNom, UtilisateurUsername, UtilisateurPassword) VALUES ('test','$username','$password')";
+        $sql = "INSERT INTO utilisateur (UtilisateurNom, UtilisateurUsername, UtilisateurPassword) VALUES ('$nom','$username','$password')";
         $req = $db->prepare($sql);
         $req->execute();
         echo json_encode(["status" => "succes", "message" => "Utilisateur créé"]);
